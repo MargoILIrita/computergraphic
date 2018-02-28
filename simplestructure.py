@@ -1,4 +1,4 @@
-class Meshh:
+class SimpleStructure:
     vertices = ()
     texture_vertices = ()
     vertex_normals = ()

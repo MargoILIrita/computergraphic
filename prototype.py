@@ -1,6 +1,7 @@
-import meshh
+import simplestructure
 
-def tofloat(t, isInt=False):
+
+def tonumber(t, isInt=False):
     tt = []
     for i in t:
         a = None
@@ -19,7 +20,7 @@ def splitto(strrr, chunk):
     tmp = []
     for s in strrr:
         t = s.split(chunk)
-        t = tofloat(t, True)
+        t = tonumber(t, True)
         if t != None:
             tmp.append(t)
     return tmp
@@ -38,11 +39,11 @@ def init(filename):
             if strs[0] == '':
                 break
             if strs[0] == 'v':
-                strV.append(tofloat(strs))
+                strV.append(tonumber(strs))
             elif strs[0] == 'vt':
-                strVT.append(tofloat(strs))
+                strVT.append(tonumber(strs))
             elif strs[0] == 'vn':
-                strVN.append(tofloat(strs))
+                strVN.append(tonumber(strs))
             elif strs[0] == 'f':
                 strF.append(splitto(strs,'/'))
             elif strs[0] == 'g':
@@ -50,7 +51,7 @@ def init(filename):
     except EOFError:
         pass
 
-    obj = meshh.Meshh()
+    obj = simplestructure.SimpleStructure()
     obj.vertices = strV
     obj.vertex_normals = strVN
     obj.texture_vertices = strVT
