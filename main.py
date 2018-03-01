@@ -1,5 +1,6 @@
-import prototype
+import geometry_primitives as gp
+import regex
+import re
 
-obbb = prototype.init("african_head.obj")
-
-print(obbb.g)
+file = open("bb8.obj")
+regex.init(file)

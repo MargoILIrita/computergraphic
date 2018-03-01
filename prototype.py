@@ -1,4 +1,4 @@
-import simplestructure
+import geometry_primitives
 
 
 def tonumber(t, isInt=False):
@@ -51,10 +51,11 @@ def init(filename):
     except EOFError:
         pass
 
-    obj = simplestructure.SimpleStructure()
+    obj = ':D'
+    '''obj = geometry_primitives.SimpleStructure()
     obj.vertices = strV
     obj.vertex_normals = strVN
     obj.texture_vertices = strVT
     obj.faces = strF
-    obj.g = g
+    obj.g = g'''
     return obj
