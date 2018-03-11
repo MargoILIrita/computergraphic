@@ -1,22 +1,29 @@
+import PIL.Image as pilimg
+from PIL import ImageDraw
+from PIL.ImageQt import rgb
+
+
 class Point2D:
-    def __init__(self, list, isfloat=True):
+    def __init__(self, list, color=None, isfloat=True):
         if isfloat:
             self.setfloat(list[0], list[1])
         else:
             self.setint(list[0], list[1])
+        # PIL.ImageQt.rgb
+        self.color = color
 
     def setfloat(self, x, y):
-        self._x = float(x)
-        self._y = float(y)
+        self.x = float(x)
+        self.y = float(y)
         self._isfloat = True
 
     def setint(self, x, y):
-        self._x = int(x)
-        self._y = int(y)
+        self.x = int(x)
+        self.y = int(y)
         self._isfloat = False
 
     def __str__(self):
-        return (self._x, self._y).__str__()
+        return (self.x, self.y).__str__()
 
 
 class Point3D:
@@ -58,3 +65,24 @@ class PolygonUnit:
 class Polygon:
     def __init__(self, list):
         self._list = list
+
+
+class Image:
+    def __init__(self, points):
+        self.points = points
+
+    def draw(self, filename):
+        img = pilimg.new('RGB', self._getMaxXY(), rgb(255, 255, 255))
+        imgDrawer = ImageDraw.Draw(img)
+        for p in self.points:
+            imgDrawer.point([p.x, p.y], p.color)
+        img.save(filename)
+
+    def _getMaxXY(self):
+        x, y = 0
+        for p in self.points:
+            if Point2D(p).x > x:
+                x = Point2D(p).x
+            if Point2D(p).y > y:
+                y = Point2D(p).y
+        return (x, y)

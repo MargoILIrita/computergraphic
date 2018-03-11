@@ -1,5 +1,5 @@
 import prototype
 
-obbb = prototype.init("african_head.obj")
+obbb = prototype.init("objects/african_head.obj")
 
 print(obbb.vertices)
