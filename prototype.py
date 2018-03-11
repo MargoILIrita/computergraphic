@@ -1,4 +1,4 @@
-import simplestructure
+import structs
 
 
 def tonumber(t, isInt=False):
@@ -16,6 +16,7 @@ def tonumber(t, isInt=False):
             tt.append(a)
     return tt
 
+
 def splitto(strrr, chunk):
     tmp = []
     for s in strrr:
@@ -24,6 +25,7 @@ def splitto(strrr, chunk):
         if t != None:
             tmp.append(t)
     return tmp
+
 
 def init(filename):
     file = open(filename)
@@ -45,16 +47,16 @@ def init(filename):
             elif strs[0] == 'vn':
                 strVN.append(tonumber(strs))
             elif strs[0] == 'f':
-                strF.append(splitto(strs,'/'))
+                strF.append(splitto(strs, '/'))
             elif strs[0] == 'g':
                 g = strs[1]
     except EOFError:
         pass
 
-    obj = simplestructure.SimpleStructure()
+    obj = structs.ObjStruct()
     obj.vertices = strV
     obj.vertex_normals = strVN
     obj.texture_vertices = strVT
     obj.faces = strF
-    obj.g = g
+    obj.group_name = g
     return obj

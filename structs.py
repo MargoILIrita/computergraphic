@@ -1,7 +1,9 @@
-class SimpleStructure:
+class ObjStruct:
     vertices = ()
     texture_vertices = ()
     vertex_normals = ()
     faces = []
-    g = ''
+    group_name = ''
+
+
 
