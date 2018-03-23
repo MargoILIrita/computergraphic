@@ -3,6 +3,8 @@ from PIL import ImageDraw
 from PIL.ImageQt import rgb
 
 
+# описывает точку в двумерном пространстве
+# на вход конструктора list of String
 class Point2D:
     def __init__(self, list, color=None, isfloat=True):
         if isfloat:
@@ -26,6 +28,8 @@ class Point2D:
         return (self.x, self.y).__str__()
 
 
+# описывает точку в трёхмерном пространстве
+#на вход конструктора list of String
 class Point3D:
     def __init__(self, list, isfloat=True):
         if isfloat:
@@ -49,6 +53,11 @@ class Point3D:
         return (self._x, self._y, self._z).__str__()
 
 
+# описывает узлы полигона.
+# Vertex - номер точки, обязательный;
+# Texture - текстурная координата, необязательный
+# Normal - нормаль, необязательна
+# конструктор принимает list of String
 class PolygonUnit:
     def __init__(self, list):
         if list.__len__() == 1:
@@ -72,6 +81,8 @@ class PolygonUnit:
             except AttributeError:
                 return (self.vertex).__str__()
 
+
+#описывает полигон, на вход рекомендуется list of PolygonUnit
 class Polygon:
     def __init__(self, list):
         self._list = list

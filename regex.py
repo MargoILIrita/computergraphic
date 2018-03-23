@@ -13,11 +13,15 @@ onevalue = re.compile('\d+\/?')
 
 
 # функция парсящая точку из файла типа obj
+# input - string
+# output - Point3D
 def v(str):
     return gp.Point3D(floatnumbers.findall(str))
 
 
 # функция, парсящая информацию о полигоне
+# input - string
+#output - Polygon
 def f(str):
     polygonunits = []
     for x in str.split(' '):
@@ -41,7 +45,9 @@ def f(str):
 
 
 # на данный момент читает только v и f
-def init(file):
+# input - file
+# output - (list of Point3D, list of Polygon)
+def analyzefile(file):
     points = []
     triangles = []
     try:
@@ -57,5 +63,4 @@ def init(file):
                     triangles.append(f(str))
     except Exception:
         pass
-    print(points.__len__())
-    print(triangles.__len__())
+    return (points, triangles)
