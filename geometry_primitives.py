@@ -61,10 +61,26 @@ class PolygonUnit:
             self.texture = int(list[1])
             self.normal = int(list[2])
 
+    # был нужен для печати в консоль, пока оставлю
+    def __str__(self):
+        try:
+            return (self.vertex, self.texture if self.texture != None else '',
+                    self.normal if self.normal != None else '').__str__()
+        except AttributeError:
+            try:
+                return (self.vertex, self.texture if self.texture != None else '').__str__()
+            except AttributeError:
+                return (self.vertex).__str__()
 
 class Polygon:
     def __init__(self, list):
         self._list = list
+
+    def __str__(self):
+        rlist = []
+        for s in self._list:
+            rlist.append(s.__str__())
+        return rlist.__str__()
 
 
 class Image:
